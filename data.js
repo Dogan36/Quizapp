@@ -1,4 +1,11 @@
-let htmlQuestions = [
+let currentTopic = 0
+let currentQuestion = 0
+let currentTotalQuestion = 0
+let rightAnswers = [0,0,0,0]
+
+
+questions = [
+[
     {
         "frage": "Was steht für HTML?",
         "antwort 1": "Hyper Text Markup Language",
@@ -9,79 +16,79 @@ let htmlQuestions = [
     },
     {
         "frage": "Welches Element wird verwendet, um eine Überschrift der ersten Ebene zu definieren?",
-        "antwort 1": "<h1>",
-        "antwort 2": "<heading>",
-        "antwort 3": "<h6>",
-        "antwort 4": "<header>",
+        "antwort 1": "&lt;h1&gt;",
+        "antwort 2": "&lt;heading&gt;",
+        "antwort 3": "&lt;h6&gt;",
+        "antwort 4": "&lt;header&gt;",
         "richtige antwort": "antwort 1"
     },
     {
         "frage": "Welches Element wird verwendet, um einen Absatz zu definieren?",
-        "antwort 1": "<p>",
-        "antwort 2": "<paragraph>",
-        "antwort 3": "<para>",
-        "antwort 4": "<section>",
-        "richtige antwort": "antwort 1"
+        "antwort 1": "&lt;section&gt;",
+        "antwort 2": "&lt;paragraph&gt;",
+        "antwort 3": "&lt;para&gt;",
+        "antwort 4": "&lt;p&gt;",
+        "richtige antwort": "antwort 4"
     },
     {
         "frage": "Welches Element wird verwendet, um einen Link zu definieren?",
-        "antwort 1": "<link>",
-        "antwort 2": "<a>",
-        "antwort 3": "<href>",
-        "antwort 4": "<url>",
+        "antwort 1": "&lt;link&gt;",
+        "antwort 2": "&lt;a&gt;",
+        "antwort 3": "&lt;href&gt;",
+        "antwort 4": "&lt;url&gt;",
         "richtige antwort": "antwort 2"
     },
     {
         "frage": "In welchem Element befindet sich der gesamte Inhalt einer Webseite?",
-        "antwort 1": "<body>",
-        "antwort 2": "<head>",
-        "antwort 3": "<html>",
-        "antwort 4": "<meta>",
+        "antwort 1": "&lt;body&gt;",
+        "antwort 2": "&lt;head&gt;",
+        "antwort 3": "&lt;html&gt;",
+        "antwort 4": "&lt;meta&gt;",
         "richtige antwort": "antwort 1"
     },
     {
         "frage": "Welches Element wird verwendet, um eine nummerierte Liste zu definieren?",
-        "antwort 1": "<ol>",
-        "antwort 2": "<list>",
-        "antwort 3": "<ul>",
-        "antwort 4": "<dl>",
-        "richtige antwort": "antwort 1"
+        "antwort 1": "&lt;list&gt;",
+        "antwort 2": "&lt;ul&gt;",
+        "antwort 3": "&lt;ol&gt;",
+        "antwort 4": "&lt;dl&gt;",
+        "richtige antwort": "antwort 3"
     },
     {
         "frage": "Welches Element wird verwendet, um eine nicht nummerierte Liste zu definieren?",
-        "antwort 1": "<ul>",
-        "antwort 2": "<ol>",
-        "antwort 3": "<li>",
-        "antwort 4": "<ul>",
+        "antwort 1": "&lt;ul&gt;",
+        "antwort 2": "&lt;ol&gt;",
+        "antwort 3": "&lt;li&gt;",
+        "antwort 4": "&lt;ul&gt;",
         "richtige antwort": "antwort 1"
     },
     {
         "frage": "Welches Element wird verwendet, um ein Bild einzufügen?",
-        "antwort 1": "<img>",
-        "antwort 2": "<picture>",
-        "antwort 3": "<image>",
-        "antwort 4": "<photo>",
+        "antwort 1": "&lt;img&gt;",
+        "antwort 2": "&lt;picture&gt;",
+        "antwort 3": "&lt;image&gt;",
+        "antwort 4": "&lt;photo&gt;",
         "richtige antwort": "antwort 1"
     },
     {
         "frage": "Welches Element wird verwendet, um einen Absatz zu erzwingen?",
-        "antwort 1": "<br>",
-        "antwort 2": "<lb>",
-        "antwort 3": "<p>",
-        "antwort 4": "<cr>",
-        "richtige antwort": "antwort 1"
+        "antwort 1": "&lt;lb&gt;",
+        "antwort 2": "&lt;br&gt;",
+        "antwort 3": "&lt;p&gt;",
+        "antwort 4": "&lt;cr&gt;",
+        "richtige antwort": "antwort 2"
     },
     {
         "frage": "Welches Element wird verwendet, um eine horizontale Linie zu definieren?",
-        "antwort 1": "<hr>",
-        "antwort 2": "<line>",
-        "antwort 3": "<br>",
-        "antwort 4": "<tr>",
+        "antwort 1": "&lt;hr&gt;",
+        "antwort 2": "&lt;line&gt;",
+        "antwort 3": "&lt;br&gt;",
+        "antwort 4": "&lt;tr&gt;",
         "richtige antwort": "antwort 1"
     }
-]
+],
 
-let cssQuestions = [
+[
     {
         "frage": "Was steht für CSS?",
         "antwort 1": "Cascading Style Sheets",
@@ -140,11 +147,11 @@ let cssQuestions = [
     },
     {
         "frage": "Welches Attribut wird verwendet, um den Text in Großbuchstaben umzuwandeln?",
-        "antwort 1": "text-transform: uppercase",
-        "antwort 2": "text-decoration: uppercase",
-        "antwort 3": "text-style: uppercase",
+        "antwort 1": "text-decoration: uppercase",
+        "antwort 2": "text-style: uppercase",
+        "antwort 3": "text-transform: uppercase",
         "antwort 4": "None of the above",
-        "richtige antwort": "antwort 1"
+        "richtige antwort": "antwort 3"
     },
     {
         "frage": "Welches Attribut wird verwendet, um die Ausrichtung eines Elements zu definieren?",
@@ -156,15 +163,15 @@ let cssQuestions = [
     },
     {
         "frage": "Welches Attribut wird verwendet, um die Transparenz eines Elements festzulegen?",
-        "antwort 1": "opacity",
-        "antwort 2": "transparent",
+        "antwort 1": "transparent",
+        "antwort 2": "opacity",
         "antwort 3": "visibility",
         "antwort 4": "filter",
-        "richtige antwort": "antwort 1"
+        "richtige antwort": "antwort 2"
     }
-]
+],
 
-let jsQuestions = [
+[
     {
         "frage": "Welches Schlüsselwort wird verwendet, um eine Variable zu deklarieren?",
         "antwort 1": "var",
@@ -244,50 +251,10 @@ let jsQuestions = [
         "antwort 3": "53",
         "antwort 4": "NaN",
         "richtige antwort": "antwort 1"
-    },
-    {
-        "frage": "Welches Objekt wird verwendet, um eine zufällige Zahl in JavaScript zu generieren?",
-        "antwort 1": "Math.random()",
-        "antwort 2": "random()",
-        "antwort 3": "Math.random",
-        "antwort 4": "random.Math()",
-        "richtige antwort": "antwort 1"
-    },
-    {
-        "frage": "Was ist das Ergebnis von 'hello'.toUpperCase() in JavaScript?",
-        "antwort 1": "'Hello'",
-        "antwort 2": "'hello'",
-        "antwort 3": "'HELLO'",
-        "antwort 4": "undefined",
-        "richtige antwort": "antwort 3"
-    },
-    {
-        "frage": "Welches Schlüsselwort wird verwendet, um eine Klasse in JavaScript zu definieren?",
-        "antwort 1": "class",
-        "antwort 2": "define",
-        "antwort 3": "klass",
-        "antwort 4": "type",
-        "richtige antwort": "antwort 1"
-    },
-    {
-        "frage": "Was ist das Ergebnis von typeof undefined in JavaScript?",
-        "antwort 1": "'null'",
-        "antwort 2": "'undefined'",
-        "antwort 3": "'object'",
-        "antwort 4": "'string'",
-        "richtige antwort": "antwort 2"
-    },
-    {
-        "frage": "Was ist das Ergebnis von [].length in JavaScript?",
-        "antwort 1": "0",
-        "antwort 2": "1",
-        "antwort 3": "undefined",
-        "antwort 4": "TypeError",
-        "richtige antwort": "antwort 1"
     }
-]
+],
 
-let nodeQuestions = [
+[
     {
         "frage": "Was ist Node.js?",
         "antwort 1": "Eine serverseitige JavaScript-Plattform",
@@ -368,4 +335,5 @@ let nodeQuestions = [
         "antwort 4": "callback",
         "richtige antwort": "antwort 4"
     }
+]
 ]

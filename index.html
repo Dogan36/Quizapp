@@ -2,36 +2,95 @@
 <html>
 
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Quizmania</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='./node_modules/bootstrap/dist/css/bootstrap.min.css'>
-    <link rel='stylesheet' media='screen' href='main.css'>
-    <script src='main.js'></script>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Quizmania</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='./node_modules/bootstrap/dist/css/bootstrap.min.css'>
+  <link rel='stylesheet' media='screen' href='main.css'>
+  <script src='data.js'></script>
+  <script src='main.js'></script>
 </head>
 
-<body>
-    <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1">QuizMania</span>
-        </div>
-    </nav>
-
+<body onload="showQuestion()">
+  <nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">QuizMania</span>
+    </div>
+  </nav>
+  <div class="content">
     <div class="card mb-3" style="max-width: 540px;">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src="..." class="img-fluid rounded-start" alt="...">
-          </div>
-          <div class="col-md-8">
+      <div class="row g-0">
+        <div class="col-md-4 leftContainer">
+          <img class="img" src="quiz.png" alt="">
+          <nav aria-label="...">
+            <ul id="list" class="pagination pagination-lg">
+              <li class="page-item" aria-current="page">
+                <span class="page-link">HTML</span>
+              </li>
+              <li class="page-item active" aria-current="page">
+                <span class="page-link">CSS</span>
+              </li>
+              <li class="page-item " aria-current="page">
+                <span class="page-link">JavaScript</span>
+              </li>
+              <li class="page-item" aria-current="page">
+                <span class="page-link">Node</span>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="col-md-8">
+          <div id="endscreen"class="card-body" style="display: none;";><div class="card" style="width: 18rem;">
+            <img src="code.jpg" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              <h5 class="card-title">Quiz beendet</h5>
+              <p class="card-text">Hier sind deine Ergebnisse:</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">HTML: <b id="resultHTML"></b> %</li>
+              <li class="list-group-item">CSS: <b id="resultCSS"></b> %</li>
+              <li class="list-group-item">JavaScript: <b id="resultJS"></b> %</li>
+              <li class="list-group-item">Node: <b id="resultNode"></b> %</li>
+            </ul>
+            <div class="card-body">
+              <h5 class="card-title">Gesamtergebnis: <b id="resultTotal"></b>%</h5>
+            </div>
+          </div></div>
+          <div id="mainscreen"class="card-body">
+            <h5 id="question" class="card-title">Card title</h5>
+
+            <div class="card quizAnswerCard mb-2" onclick="checkAnswer(1)">
+              <div id="answer1"class="card-body">
+                This is some text within a card body.
+              </div>
+            </div>
+            <div class="card quizAnswerCard mb-2" onclick="checkAnswer(2)">
+              <div id="answer2"class="card-body">
+                This is some text within a card body.
+              </div>
+            </div>
+            <div class="card quizAnswerCard mb-2" onclick="checkAnswer(3)">
+              <div id="answer3"class="card-body">
+                This is some text within a card body.
+              </div>
+            </div>
+            <div class="card quizAnswerCard mb-2" onclick="checkAnswer(4)">
+              <div id="answer4"class="card-body">
+                This is some text within a card body.
+              </div>
             </div>
           </div>
         </div>
+        <div class="footer">
+          <span>Frage <b id="currentQuestion"></b> von <b id="totalQuestion">10</b></span>
+          <button onclick="showNextQuestion()" id="nextButton" disabled type="button" class="btn btn-primary">Nächste</button>
+        </div>
       </div>
+      <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+        <div id = "progressbar"class="progress-bar">0%</div>
+      </div>
+    </div>
 </body>
 
 </html>
